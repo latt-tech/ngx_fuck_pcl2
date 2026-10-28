@@ -1,0 +1,29 @@
+# nginx module descriptor for ngx_http_fuck_pcl2_module.
+#
+# Static build (recommended):
+#     ./configure --add-module=/path/to/ngx_fuck_pcl2 ...
+#     make && make install
+#
+# Dynamic build:
+#     ./configure --with-compat --add-dynamic-module=/path/to/ngx_fuck_pcl2 ...
+#     make modules && make install
+#     # then in nginx.conf:
+#     #   load_module modules/ngx_http_fuck_pcl2_module.so;
+
+ngx_addon_name=ngx_http_fuck_pcl2_module
+
+if test -n "$ngx_module_link"; then
+
+    ngx_module_type=HTTP
+    ngx_module_name=ngx_http_fuck_pcl2_module
+    ngx_module_srcs="$ngx_addon_dir/src/ngx_http_fuck_pcl2_module.c"
+    ngx_module_libs=""
+
+    . auto/module
+
+else
+
+    HTTP_MODULES="$HTTP_MODULES ngx_http_fuck_pcl2_module"
+    NGX_ADDON_SRCS="$NGX_ADDON_SRCS $ngx_addon_dir/src/ngx_http_fuck_pcl2_module.c"
+
+fi
